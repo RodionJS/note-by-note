@@ -18,7 +18,7 @@ const ViewWidget = ({ theme, content, setViewVisible }) => {
         ></textarea>
 
         <button
-          className="m-2 px-4 py-2 relative -bottom-10 text-white rounded duration-300 bg-red-500 hover:bg-red-600 active:scale-90"
+          className="m-2 px-4 py-2 relative -bottom-10 sm:bottom-0 text-white rounded duration-300 bg-red-500 hover:bg-red-600 active:scale-90"
           onClick={() => setViewVisible(false)}
         >
           Close

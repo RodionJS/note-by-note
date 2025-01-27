@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import { noteCSS, viewButtonCSS } from "../assets/css";
+import { copiedCSS, noteCSS, viewButtonCSS } from "../assets/css";
 import ViewWidget from "./ViewWidget";
+import DotMenu from "./DotMenu";
 
 const Note = ({ note, notes, setNotes }) => {
   const [menuVisible, setMenuVisible] = useState(false);
   const [viewVisible, setViewVisible] = useState(false);
+  const [copied, setCopied] = useState(false);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
 
@@ -63,24 +65,24 @@ const Note = ({ note, notes, setNotes }) => {
     <div key={note.id} className={noteCSS}>
       <button
         ref={buttonRef}
-        className="ml-auto rotate-90 absolute top-2.5 right-[3px] duration-500 hover:text-shadow-black scale-125"
+        className="ml-auto rotate-90 absolute top-2.5 right-[3px] hover:text-shadow-black scale-125"
         onClick={() => setMenuVisible(!menuVisible)}
       >
         ...
       </button>
 
+      <span className={copiedCSS + (copied ? " opacity-100" : "")}>
+        Copied to clipboard
+      </span>
+
       {menuVisible && (
-        <div
-          ref={menuRef}
-          className="absolute top-1 right-[5px] bg-white border rounded shadow-md px-3 py-1.5"
-        >
-          <button
-            onClick={handleDelete}
-            className="text-black text-sm duration-500 hover:text-shadow-hoverBlack"
-          >
-            Delete
-          </button>
-        </div>
+        <DotMenu
+          menuRef={menuRef}
+          note={note}
+          copied={copied}
+          setCopied={setCopied}
+          handleDelete={handleDelete}
+        />
       )}
 
       <h3 className="text-xl font-semibold mb-2">{note.theme}</h3>

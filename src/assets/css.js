@@ -6,3 +6,5 @@ export const viewButtonCSS =
   "absolute bottom-4 right-1/2 translate-x-1/2 duration-300 opacity-0 group-hover:opacity-100 rounded text-white text-md px-5 py-1 bg-blue-500 hover:bg-blue-600 active:scale-95 transition-all";
 export const createButtonCSS =
   "col-span-full px-4 py-2 mx-auto sm:ml-0 sm:mr-auto w-fit text-white rounded duration-300 bg-blue-500 hover:bg-blue-600 active:scale-95 transition-all";
+export const copiedCSS =
+  "absolute z-50 top-[-20px] right-0 bg-white text-gray-600 text-xs select-none pointer-events-none border rounded px-2 py-1 duration-500 opacity-0";

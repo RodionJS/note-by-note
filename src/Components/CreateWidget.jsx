@@ -50,12 +50,12 @@ const CreateWidget = ({ notes, setNotes, setIsModalOpen }) => {
           <textarea
             value={input.content}
             maxLength={1000}
-            className="w-full flex-1 resize-none py-2 px-4 mb-4 border-2 rounded transition-colors duration-200 focus:border-gray-500 focus:outline-none"
+            className="w-full flex-1 resize-none py-2 px-4 mb-10 border-2 rounded transition-colors duration-200 focus:border-gray-500 focus:outline-none"
             placeholder="Type your note here..."
             onChange={(e) => setInput({ ...input, content: e.target.value })}
           ></textarea>
         </form>
-        <div className="flex justify-center gap-2 mb-3">
+        <div className="flex justify-center gap-2 mb-5">
           <button
             className="px-4 py-2 text-white rounded duration-300 bg-blue-500 hover:bg-blue-600 active:scale-95"
             onClick={handelCreateNote}

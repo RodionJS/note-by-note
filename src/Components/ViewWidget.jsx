@@ -17,11 +17,11 @@ const ViewWidget = ({ theme, content, setViewVisible }) => {
           <textarea
             value={content}
             readOnly
-            className="w-full flex-1 min-h-56 resize-none py-2 px-4 mb-4 border-2 rounded transition-colors duration-200 focus:border-gray-500 focus:outline-none"
+            className="w-full flex-1 min-h-56 resize-none py-2 px-4 mb-10 border-2 rounded transition-colors duration-200 focus:border-gray-500 focus:outline-none"
           ></textarea>
         </div>
 
-        <div className="flex justify-center mb-3">
+        <div className="flex justify-center mb-5">
           <button
             className="px-4 py-2 text-white rounded duration-300 bg-red-500 hover:bg-red-600 active:scale-90"
             onClick={() => setViewVisible(false)}

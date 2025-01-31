@@ -19,7 +19,7 @@ const ContentsWindow = ({ notes, setNotes }) => {
   }, [isModalOpen]);
   /* LOGIC TO HIDE SCROLLBAR */
   return (
-    <div className="flex flex-col items-center justify-center h-full text-center mt-8">
+    <div className="flex flex-col items-center justify-center h-full text-center mt-8 2xl:mx-10">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-auto w-11/12 sm:w:3/4 2xl:w-1/2 mb-12">
         {notes.length > 2 && (
           <button

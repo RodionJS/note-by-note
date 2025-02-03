@@ -1,37 +1,49 @@
 import React from "react";
 
-const DotMenu = ({ menuRef, note, copied, setCopied, handleDelete }) => {
+const DotMenu = ({
+  menuRef,
+  note,
+  copied,
+  setCopied,
+  handleDelete,
+  setIsEditVisible,
+  setMenuVisible,
+}) => {
   return (
     <div
       ref={menuRef}
       className="absolute top-1 right-[5px] bg-white border rounded shadow-md px-3 py-1.5 divide-gray-400 divide-y-[1px] flex flex-col"
     >
-      <button className="text-black text-xs font-semibold text-left py-1.5 group relative group/button">
+      <button
+        onClick={() => {
+          setMenuVisible(false);
+          navigator.clipboard
+            .writeText(note.content)
+            .then(() => {
+              if (!copied) {
+                setCopied(true);
+                setTimeout(() => {
+                  setCopied(false);
+                }, 1000);
+              }
+            })
+            .catch((err) => {
+              console.error("Failed to copy content: ", err);
+            });
+        }}
+        className="text-black text-xs font-semibold text-left py-1.5 group relative group/button"
+      >
         📋
-        <span
-          onClick={() => {
-            navigator.clipboard
-              .writeText(note.content)
-              .then(() => {
-                if (!copied) {
-                  setCopied(true);
-                  setTimeout(() => {
-                    setCopied(false);
-                  }, 1000);
-                }
-              })
-              .catch((err) => {
-                console.error("Failed to copy content: ", err);
-              });
-          }}
-          className="group-hover/button:text-shadow-hoverBlack duration-500"
-        >
+        <span className="group-hover/button:text-blue-700 duration-500 ml-0.5">
           Copy
         </span>
       </button>
-      <button className="text-black text-xs font-semibold text-left py-1.5 group relative group/button">
+      <button
+        onClick={() => setIsEditVisible(true)}
+        className="text-black text-xs font-semibold text-left py-1.5 group relative group/button"
+      >
         ✏️
-        <span className="group-hover/button:text-shadow-hoverBlack duration-500">
+        <span className="group-hover/button:text-blue-700 duration-500 ml-0.5">
           Edit
         </span>
       </button>
@@ -40,7 +52,7 @@ const DotMenu = ({ menuRef, note, copied, setCopied, handleDelete }) => {
         className="text-black text-xs font-semibold text-left py-1.5 group relative group/button"
       >
         🗑️
-        <span className="group-hover/button:text-shadow-red duration-500">
+        <span className="group-hover/button:text-red-600 duration-500 ml-0.5">
           Delete
         </span>
       </button>

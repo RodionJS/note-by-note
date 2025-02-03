@@ -2,10 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import { copiedCSS, noteCSS, viewButtonCSS } from "../assets/css";
 import ViewWidget from "./ViewWidget";
 import DotMenu from "./DotMenu";
+import EditWidget from "./EditWidget";
 
 const Note = ({ note, notes, setNotes }) => {
   const [menuVisible, setMenuVisible] = useState(false);
   const [viewVisible, setViewVisible] = useState(false);
+  const [isEditVisible, setIsEditVisible] = useState(false);
   const [copied, setCopied] = useState(false);
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
@@ -61,11 +63,12 @@ const Note = ({ note, notes, setNotes }) => {
     };
   }, [viewVisible]);
   /* LOGIC TO HIDE SCROLLBAR */
+
   return (
     <div key={note.id} className={noteCSS}>
       <button
         ref={buttonRef}
-        className="ml-auto rotate-90 absolute top-2.5 right-[3px] hover:text-shadow-black scale-125"
+        className="ml-auto rotate-90 absolute top-2.5 right-[3px] text-xl hover:text-blue-700 hover:scale-x-125 duration-500"
         onClick={() => setMenuVisible(!menuVisible)}
       >
         ...
@@ -79,9 +82,11 @@ const Note = ({ note, notes, setNotes }) => {
         <DotMenu
           menuRef={menuRef}
           note={note}
+          setIsEditVisible={setIsEditVisible}
           copied={copied}
           setCopied={setCopied}
           handleDelete={handleDelete}
+          setMenuVisible={setMenuVisible}
         />
       )}
 
@@ -102,6 +107,14 @@ const Note = ({ note, notes, setNotes }) => {
           theme={note.theme}
           content={note.content}
           setViewVisible={setViewVisible}
+        />
+      )}
+      {isEditVisible && (
+        <EditWidget
+          note={note}
+          notes={notes}
+          setNotes={setNotes}
+          setIsEditVisible={setIsEditVisible}
         />
       )}
     </div>

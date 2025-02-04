@@ -7,7 +7,7 @@ const EditWidget = ({ note, notes, setNotes, setIsEditVisible }) => {
   /* STATE FOR CURRENT INPUT */
 
   const handelEditNote = () => {
-    if (input.content === "")
+    if (input == "")
       return setNotes(notes.filter((item) => item.id !== note.id));
 
     const editedNote = {

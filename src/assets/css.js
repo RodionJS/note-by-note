@@ -7,6 +7,6 @@ export const viewButtonCSS =
 export const createButtonCSS =
   "col-span-full px-4 py-2 mx-auto sm:ml-0 sm:mr-auto w-fit text-white rounded duration-300 bg-blue-500 hover:bg-blue-600 active:scale-95 transition-all";
 export const copiedCSS =
-  "absolute z-50x top-1.5 right-[5px] bg-white text-gray-600 text-sm select-none pointer-events-none border rounded px-2 py-1 duration-500 opacity-0";
+  "absolute z-50 bg-white text-gray-600 text-sm select-none pointer-events-none border rounded px-2 py-1 duration-500 opacity-0";
 export const editTextAreaCSS =
   "w-full flex-1 resize-none p-2 mb-10 border-2 rounded transition-colors duration-200 focus:border-gray-500 focus:outline-none placeholder:pt-1 placeholder:text-xl placeholder:text-center place-holder:font-bold";

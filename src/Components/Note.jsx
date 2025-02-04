@@ -74,7 +74,11 @@ const Note = ({ note, notes, setNotes }) => {
         ...
       </button>
 
-      <span className={copiedCSS + (copied ? " opacity-100" : "")}>
+      <span
+        className={
+          copiedCSS + " top-1.5 right-[5px]" + (copied ? " sm:opacity-100" : "")
+        }
+      >
         Copied to clipboard
       </span>
 
@@ -104,9 +108,10 @@ const Note = ({ note, notes, setNotes }) => {
       </button>
       {viewVisible && (
         <ViewWidget
-          theme={note.theme}
-          content={note.content}
           setViewVisible={setViewVisible}
+          note={note}
+          setIsEditVisible={setIsEditVisible}
+          handleDelete={handleDelete}
         />
       )}
       {isEditVisible && (

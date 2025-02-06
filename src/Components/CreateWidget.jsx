@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { MainContext } from "../App";
 
-const CreateWidget = ({ setIsModalOpen }) => {
-  const { notes, setNotes } = useContext(MainContext);
+const CreateWidget = () => {
+  const { notes, setNotes, setIsModalOpen } = useContext(MainContext);
 
   const [input, setInput] = useState({
     theme: "",

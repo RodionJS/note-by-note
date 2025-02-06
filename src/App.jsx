@@ -22,9 +22,9 @@ const App = () => {
   /* NOTES STORAGE */
 
   return (
-    <MainContext.Provider value={{ notes, setNotes }}>
+    <MainContext.Provider value={{ notes, setNotes, setIsModalOpen }}>
       {notes.length === 0 ? <EmptyWindow /> : <ContentsWindow />}
-      {isModalOpen && <CreateWidget setIsModalOpen={setIsModalOpen} />}
+      {isModalOpen && <CreateWidget />}
     </MainContext.Provider>
   );
 };

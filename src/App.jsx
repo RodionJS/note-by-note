@@ -2,13 +2,14 @@ import { createContext, useEffect, useState } from "react";
 import EmptyWindow from "./Components/EmptyWindow";
 import ContentsWindow from "./Components/ContentsWindow";
 import CreateWidget from "./Components/CreateWidget";
-/* MADE BY RODION KUZNETSOV */
-/* BELGRADE, SINGIDUNUM UNIVERSITY */
 export const MainContext = createContext();
 
+/* MADE BY RODION KUZNETSOV */
+/* BELGRADE, SINGIDUNUM UNIVERSITY */
+
 const App = () => {
-  const [isModalOpen, setIsModalOpen] =
-    useState(false); /* CREATE WINDOW STATE */
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  /* CREATE WINDOW STATE */
 
   const [notes, setNotes] = useState(() => {
     const savedNotes = localStorage.getItem("notes");
@@ -21,11 +22,9 @@ const App = () => {
   /* NOTES STORAGE */
 
   return (
-    <MainContext.Provider
-      value={{ notes, setNotes, isModalOpen, setIsModalOpen }}
-    >
+    <MainContext.Provider value={{ notes, setNotes }}>
       {notes.length === 0 ? <EmptyWindow /> : <ContentsWindow />}
-      {isModalOpen && <CreateWidget />}
+      {isModalOpen && <CreateWidget setIsModalOpen={setIsModalOpen} />}
     </MainContext.Provider>
   );
 };

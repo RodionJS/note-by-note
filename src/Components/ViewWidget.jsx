@@ -1,13 +1,10 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { copiedCSS } from "../assets/css";
+import { NoteContext } from "./Note";
 
-const ViewWidget = ({
-  setViewVisible,
-  note,
-  setIsEditVisible,
-  handleDelete,
-}) => {
+const ViewWidget = ({ setViewVisible }) => {
+  const { note, setIsEditVisible, handleDelete } = useContext(NoteContext);
   const [copied, setCopied] = useState(false);
 
   return (

@@ -1,14 +1,10 @@
 import React from "react";
+import { useContext } from "react";
+import { NoteContext } from "./Note";
 
-const DotMenu = ({
-  menuRef,
-  note,
-  copied,
-  setCopied,
-  handleDelete,
-  setIsEditVisible,
-  setMenuVisible,
-}) => {
+const DotMenu = ({ menuRef, copied, setCopied, setMenuVisible }) => {
+  const { note, setIsEditVisible, handleDelete } = useContext(NoteContext);
+
   return (
     <div
       ref={menuRef}

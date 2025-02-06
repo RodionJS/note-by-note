@@ -2,18 +2,17 @@ import React from "react";
 import { useState, useContext } from "react";
 import { MainContext } from "../App";
 import { editTextAreaCSS } from "../assets/css";
+import { NoteContext } from "./Note";
 
-const EditWidget = ({ note, setIsEditVisible }) => {
+const EditWidget = () => {
   const { notes, setNotes } = useContext(MainContext);
+  const { note, setIsEditVisible, handelDelete } = useContext(NoteContext);
 
   const [input, setInput] = useState(note.content);
   /* STATE FOR CURRENT INPUT */
 
   const handelEditNote = () => {
-    if (input == "")
-      return setNotes(
-        notes.filter((item) => item.id !== note.id)
-      ); /* DELETING NOTE IF EMPTY TEXTAREA */
+    if (input == "") return handelDelete; /* DELETING NOTE IF EMPTY TEXTAREA */
 
     const editedNote = {
       theme: note.theme,

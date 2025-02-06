@@ -1,16 +1,22 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
+import { MainContext } from "../App";
 import { copiedCSS, noteCSS, viewButtonCSS } from "../assets/css";
 import ViewWidget from "./ViewWidget";
 import DotMenu from "./DotMenu";
 import EditWidget from "./EditWidget";
 
-const Note = ({ note, notes, setNotes }) => {
-  const [menuVisible, setMenuVisible] = useState(false);
-  const [viewVisible, setViewVisible] = useState(false);
-  const [isEditVisible, setIsEditVisible] = useState(false);
-  const [copied, setCopied] = useState(false);
-  const menuRef = useRef(null);
-  const buttonRef = useRef(null);
+const Note = ({ note }) => {
+  const { notes, setNotes } = useContext(MainContext);
+  const [menuVisible, setMenuVisible] =
+    useState(false); /* STATE FOR "..." MENU */
+  const [viewVisible, setViewVisible] =
+    useState(false); /* STATE FOR NOTE VIEW WINDOW */
+  const [isEditVisible, setIsEditVisible] =
+    useState(false); /* STATE FOR EDIT WINDOW */
+  const [copied, setCopied] =
+    useState(false); /* STATE FOR SMALL "COPIED TO CLIPBOARD" WINDOW */
+  const menuRef = useRef(null); /* REF FOR "... WINDOW" */
+  const buttonRef = useRef(null); /* I DON'T REMEMBER WHY I ADDED THIS */
 
   note.date = new Date(note.date);
   const mons = note.date.getMonth() + 1;
@@ -115,12 +121,7 @@ const Note = ({ note, notes, setNotes }) => {
         />
       )}
       {isEditVisible && (
-        <EditWidget
-          note={note}
-          notes={notes}
-          setNotes={setNotes}
-          setIsEditVisible={setIsEditVisible}
-        />
+        <EditWidget note={note} setIsEditVisible={setIsEditVisible} />
       )}
     </div>
   );

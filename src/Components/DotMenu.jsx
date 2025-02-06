@@ -30,7 +30,7 @@ const DotMenu = ({
             .catch((err) => {
               console.error("Failed to copy content: ", err);
             });
-        }}
+        }} /* LOGIC FOR "COPIED TO CLIPBOARD" WINDOW TO SHOW FOR 1 SECOND */
         className="text-black text-xs font-semibold text-left py-1.5 group relative group/button"
       >
         📋

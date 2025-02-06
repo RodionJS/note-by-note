@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useContext, useState } from "react";
+import { MainContext } from "../App";
 
-const CreateWidget = ({ notes, setNotes, setIsModalOpen }) => {
+const CreateWidget = () => {
+  const { notes, setNotes, setIsModalOpen } = useContext(MainContext);
+
   const [input, setInput] = useState({
     theme: "",
     content: "",

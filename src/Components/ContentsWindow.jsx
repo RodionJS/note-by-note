@@ -1,12 +1,13 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { MainContext } from "../App";
 import Note from "./Note";
-import CreateWidget from "./CreateWidget";
 import { createButtonCSS, plusCSS } from "../assets/css";
 
-const ContentsWindow = ({ notes, setNotes }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  /* STATE FOR NOTE CREATING WINDOW */
+const ContentsWindow = () => {
+  const { notes, setNotes, isModalOpen, setIsModalOpen } =
+    useContext(MainContext);
+
   useEffect(() => {
     if (isModalOpen) {
       document.body.classList.add("overflow-y-hidden");
@@ -48,13 +49,6 @@ const ContentsWindow = ({ notes, setNotes }) => {
           </svg>
         </div>
       </div>
-      {isModalOpen && (
-        <CreateWidget
-          notes={notes}
-          setNotes={setNotes}
-          setIsModalOpen={setIsModalOpen}
-        />
-      )}
     </div>
   );
 };

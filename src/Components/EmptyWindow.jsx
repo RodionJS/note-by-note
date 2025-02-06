@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import CreateWidget from "./CreateWidget";
+import React, { useContext } from "react";
+import { MainContext } from "../App";
 
-const EmptyWindow = ({ notes, setNotes }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  /* STATE FOR NOTE CREATING WINDOW */
+const EmptyWindow = () => {
+  const { setIsModalOpen } = useContext(MainContext);
 
   return (
     <div className="flex flex-col items-center justify-center h-full text-center mt-20 p-5">
@@ -17,14 +16,6 @@ const EmptyWindow = ({ notes, setNotes }) => {
       >
         Create your first note
       </button>
-
-      {isModalOpen && (
-        <CreateWidget
-          notes={notes}
-          setNotes={setNotes}
-          setIsModalOpen={setIsModalOpen}
-        />
-      )}
     </div>
   );
 };

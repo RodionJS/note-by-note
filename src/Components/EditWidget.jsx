@@ -6,13 +6,14 @@ import { NoteContext } from "./Note";
 
 const EditWidget = () => {
   const { notes, setNotes } = useContext(MainContext);
-  const { note, setIsEditVisible, handelDelete } = useContext(NoteContext);
+  const { note, setIsEditVisible, handleDelete } = useContext(NoteContext);
 
   const [input, setInput] = useState(note.content);
   /* STATE FOR CURRENT INPUT */
 
   const handelEditNote = () => {
-    if (input == "") return handelDelete; /* DELETING NOTE IF EMPTY TEXTAREA */
+    if (input == "")
+      return handleDelete(); /* DELETING NOTE IF EMPTY TEXTAREA */
 
     const editedNote = {
       theme: note.theme,

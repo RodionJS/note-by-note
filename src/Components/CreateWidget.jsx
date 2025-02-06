@@ -38,8 +38,8 @@ const CreateWidget = () => {
         >
           +
         </button>
-        <h3 className="text-xl font-semibold mb-4">New note</h3>
-        <p className="mb-4">Create your note!</p>
+        <h3 className="text-xl font-semibold mx-auto mb-4">New note</h3>
+        <p className="mx-auto mb-4">Create your note!</p>
         <form className="flex flex-1 flex-col">
           <input
             value={input.theme}
